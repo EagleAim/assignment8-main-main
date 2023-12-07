@@ -14,15 +14,15 @@
 //values that was called used in the code
 const userName = document.getElementById("name");
 
-const backGround = document.getElementById("background");
+const backGround = document.getElementById("background-color");
 
-const foreGround = document.getElementById("foreground");
+const foreGround = document.getElementById("foreground-color");
 
-const form = document.getElementById("form");
+const form = document.getElementById("preferences-form");
 
-const body = document.getElementById("body")
+const body = document.querySelector("body");
 
-const greeting = document.getElementById("greeting")
+const greeting = document.getElementById("greeting");
 
 
 //event listener
@@ -49,7 +49,7 @@ form.addEventListener("submit", event => {
 //user preferences
 function applyPreferences() {
   greeting.innerHTML = "Hello, " + localStorage.getItem("username");
-  Body.style.backgroundColor = localStorage.getItem("background");
+  body.style.backgroundColor = localStorage.getItem("background");
   body.style.color = localStorage.getItem("foreground");
 
   userName.value = localStorage.getItem("username");

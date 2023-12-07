@@ -11,27 +11,57 @@
 // were saved.
 
 
+//values that was called used in the code
+const userName = document.getElementById("name");
 
-let foreGround = document.querySelectorAll("[name=foreground-color]");
-  for (let button of Array.from(forgGround)) {
-    button.addEventListener("value", () => {
-      document.body.style.background = button.value;
-    });
-  }
-//This is for text color
+const backGround = document.getElementById("background");
+
+const foreGround = document.getElementById("foreground");
+
+const form = document.getElementById("form");
+
+const body = document.getElementById("body")
+
+const greeting = document.getElementById("greeting")
 
 
-  let backGround = document.querySelectorAll("[name=background-color]");
-  for (let button of Array.from(backGround)) {
-    button.addEventListener("value", () => {
-      document.body.style.background = button.value;
-    });
-  }
-//this is for back ground color
- 
-/*  document is showing as a error again
+//event listener
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  console.log("name: " + userName.value);
+  console.log("background: " + backGround.value);
+  console.log("foreground: " + foreGround.value);
+  
+  //localstorage
+  localStorage.setItem("key", "value");
+  localStorage.getItem("key");
+  
+  localStorage.setItem("username", userName.value);
+  localStorage.setItem("background", backGround.value);
+  localStorage.setItem("foreground", foreGround.value);
 
-let foreGround = document.querySelectorAll("[name=foreground-color]");
-^
+  alert("your preferences have been saved!");
 
-ReferenceError: document is not defined */
+  applyPreferences();
+});
+
+
+//user preferences
+function applyPreferences() {
+  greeting.innerHTML = "Hello, " + localStorage.getItem("username");
+  Body.style.backgroundColor = localStorage.getItem("background");
+  body.style.color = localStorage.getItem("foreground");
+
+  userName.value = localStorage.getItem("username");
+  backGround.value = localStorage.getItem("background");
+  foreGround.value = localStorage.getItem("foreground");
+}
+
+
+//loads on start up
+window.onload = (event) => {
+  applyPreferences();
+};
+
+
+
